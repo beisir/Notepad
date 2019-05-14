@@ -1,0 +1,129 @@
+ftp 有权限的目录
+/ftpstyle/style/js/public/private/youke/css
+
+
+
+检测浏览器是否安装flsh方法： navigator.plugins['Shockwave Flash']
+
+
+
+/usr/local/nginx/html/RebusOpport   新版商机发布页
+
+
+miss 密码： 5211314..
+
+https://style.org.hc360.com/js/build/source/core/jquery.min.js
+disableHostCheck: true 
+
+192.168.3.46 sso.hc360.com
+foxmail:
+	hebei@hc360.com
+	5211314..
+
+AppID(小程序ID) 	wx4ab81cf09eebe848
+AppSecret(小程序密钥)   471eed477db77b571322e1855cb3f8e6
+腾讯地理位置转换 开发者key：SCNBZ-A4WCU-XPFVM-B4HPL-DTSCO-3ZB5F
+
+
+
+公众号： gh_479efb8f4885
+
+AppID（公众号ID）：wx9b6b2660a52730ed
+AppSecret(公众号秘钥): 2ffa45fa5c1e074232bc0c8a71c9a1f6
+
+
+-webkit-text-stroke: 2.1px #000000;	css3 文字描边属性;
+-webkit-text-fill-color:transparent;	文字透明
+
+
+anywhere文字编码   C:\Users\hc360\AppData\Roaming\npm\node_modules\anywhere\bin
+
+
+
+
+1、切换远程仓库地址：
+方式一：修改远程仓库地址
+
+【git remote set-url origin URL】 更换远程仓库地址，URL为新地址。
+
+方式二：先删除远程仓库地址，然后再添加
+
+【git remote rm origin】 删除现有远程仓库 
+【git remote add origin url】添加新远程仓库
+
+
+// 关键词替换
+var ci = '阿斯利';
+var str = '你是爱上大立科技阿斯利康的卡老实交代'
+var reg = new RegExp("(" + ci + ")","ig");
+str = str.replace(reg, "<strong>" + ci + "</strong>");
+console.log(str);
+
+文字换行样式
+.parent{
+  word-wrap:break-word
+}
+
+<script type="text/javascript">
+  (function(win) {
+    var doc = win.document;
+    var uiWidth = 720;//设计稿UI的宽度
+    var evt = "onorientationchange" in win ? "orientationchange" : "resize";
+    function setFontSize() {
+      doc.documentElement.style.fontSize = win.innerWidth / uiWidth * 100 + 'px';
+    };
+    win.addEventListener(evt, setFontSize, false);
+    doc.addEventListener("DOMContentLoaded", setFontSize, false);
+  })(window);
+</script>
+
+
+
+var LocalCookie = {
+
+	getTodayLastTime: function() {
+
+		var d = new Date();
+		var h = 23 - d.getHours();
+		var m = 59 - d.getMinutes();
+		var s = 60 - d.getSeconds();
+
+		return (h * 3600 + m * 60 + s) * 1000;
+	},
+	getExpireTimeString: function(day) {
+
+ 		var time = (day === 0) ? this.getTodayLastTime() : day * 24 * 3600 * 1000;
+
+	        var currentTime = new Date().getTime();
+		return new Date(currentTime + time).toUTCString();
+
+	},
+	set: function(opt) {
+		var expire = ';expires=';
+  
+	          if (isNaN(opt.day))
+
+                	expire = '';
+         
+	   	else
+ 
+		 expire += this.getExpireTimeString(opt.day);
+            var domain = (opt.domain) ? ';domain=' + opt.domain : '';
+            var path = (opt.path) ? ';path=' + opt.path : '';
+            d.cookie = opt.key + '=' + encodeURIComponent(opt.value) + expire + domain + path;
+        },
+        get: function(key) {
+            var arr, reg = new RegExp("(^| )" + key + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return decodeURIComponent(arr[2]);
+            else
+                return null;
+        },
+        remove: function(key) {
+            this.set({
+                'key': key,
+                'value': '',
+                'day': -1
+            });
+        }
+    };
