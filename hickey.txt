@@ -1,0 +1,132 @@
+阿里云服务器：ip: 47.92.2.12 (公网)	172.26.28.249 (内网)
+远程连接密码：342344
+文档地址：https://help.ubuntu.com/
+
+安装淘宝源  npm --registry=https://registry.npm.taobao.org install -g cnpm
+cnpm sync koa // cnpm 强制同步包文件
+ssh: 命令
+   ssh root@47.92.2.12
+   df -h :查看使用系统盘情况
+   adduser xxx: 添加用户管理权限
+
+   beisir/5211314..
+
+   mv 原来的名 修改的名  // 修改文件名
+   cat xxx // 查看文件内容
+   glassed -a   sudo	// 添加权限
+   sudo visudo  // 查看权限列表
+   root    ALL=(ALL:ALL) ALL // 以上的规则对生效
+   control + x // 保存权限
+   shift + y   // 确定保存
+
+   service ssh restart // 重启服务
+   sudo vi /etc/ssh/sshd_config // 修改配置文件
+
+
+   sudo apt-get update && sudo apt-get upgrade // 更新文件
+   sudo vi /etc/iptables.up.rules  // 配置防火墙文件
+   sudo ufw enable // 激活防火墙
+   sudo ufw status // 查看防火墙
+   sudo vi /etc/network/if-up.d/iptables.   // 开机自动重启防火墙
+
+   sudo chmod 777 webtodo	// 修改文件夹可读写
+
+   pm2 deploy ecosystem.json production setup // 部署命令
+
+iptables
+/*************************************************/
+    sudo vi /etc/iptables.up.rules // 编辑防火墙规则文件
+    sudo iptables-restore < /etc/iptables.up.rules  // 指定防火墙iptables规则配置文件
+/*************************************************/
+    sudo ufw status   // 查看防火墙有没有被激活
+    sudo ufw enable   // 激活防火墙
+    sudo vi /etc/network/if-up.d/iptables // 创建防火墙服务器开机之后自动启动
+    sudo chmod +x /etc/network/if-up.d/iptables // 添加上方脚本执行权限
+Fail2Ban    // 防御性的动作库，监控系统的日志文件，根据检测的任何可疑行为，触发不同的环境动作，比如将可疑目标执行ip锁定==
+
+    sudo apt-get install fail2ban   // 安装fail2ban
+    sudo vi /etc/fail2ban/jail.conf  // 配置fail2ban 配置文件
+    sudo service fail2ban status    // 查看fail2ban 是否运行
+    sudo service fail2ban stop      // 停止fail2ban 运行
+    sudo service fail2ban start     // 开启fail2ban 运行
+
+
+
+
+
+*filter
+
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# 允许所有输出的流量规则
+# allo all connections
+-A OUTPUT -j ACCEPT
+
+# 允许https 下的协议的链接
+# allow out traffic
+-A INPUT -p tcp --dport 443 -j ACCEPT
+
+# 所有的网站都是80端口进入，所以允许80,443端口流量进出
+# allow http https
+-A INPUT -p tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp --dport 80 -j ACCEPT
+
+# 为登陆ssh的登陆方式建立通道
+# allow ssh port login
+# 因为beisir这个用户通过39999端口进入服务器，开启允许方式
+-A INPUT -p tcp -m state --state NEW --dport 39999 -j ACCEPT
+
+# 允许外网从某台服务器 ping到服务器，方便检测
+-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
+# 记录下这些被拒绝的请求
+# log denied calls
+-A INPUT -m limit 5/min -j LOG --log-prefix "iptables denied:" --log-level 7
+
+# 设置拒绝其他的进入服务器的流量
+# reject all other inbound
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
+
+COMMIT
+
+
+
+
+
+
+nginx: 命令
+
+   sudo sercice apache2 stop	// 暂停apache2 服务
+   Update-rc.d -f apache2 remote // 删除apache2
+   sudo apt-get remove apache2 	// 移除apache2
+   sudo apt-get update //更新包列表
+   sudo apt-get install nginx	// 安装nginx
+   cd /etc/nginx/	// 进入nginx目录下
+   cd conf.d		// 进入nginx 配置文件目录
+   sudo vi xxxx-com-3333.conf	// 创建外部暴露的端口配置文件
+   创建	upstream xxxx
+
+   sudo vi nginx.conf	// 修改nginx 配置文件
+   // include /etc/nginx/conf.d/*.conf;   会将所有的conf.d/下的文件加载进来
+
+   sudo nginx -t 	// 检测配置文件有无错误
+   sudo nginx -s reload // 重启nginx
+   sudo vi nginx.conf   // 删除server_tokens off;注释，会在network中不现实server：字段下版本
+   sudo service nginx reload // 一样的重启命令
+
+   https:
+   scp -P 39999 ./2_bei.hickey.cn.key beisir@47.92.2.12:/home/beisir/ // 本地上传文件到服务器
+   scp -P 39999 -r 文件夹 beisir@47.92.2.12:/home/beisir/		// 上传文件夹到服务器
+   mv 1_* ./ssl/	// 移动文件到指定目录
+
+
+
+mongod:
+   sudo cat /var/log/mongodb/mongod.log	  // 查看mongodb是否开启成功
+   sudo service mongod stop 	// 停止mongod 服务
+   sudo service mongod start	// 开启mongod 服务
+   sudo service mongod restart mongod	// 重新启动 mongod。 mongod 服务默认端口为27017
+   sudo vi /etc/mongod.conf    // 修改port端口 为 29999
+
+   mongo --port 29999	// 连接数据库
