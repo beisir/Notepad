@@ -31,3 +31,15 @@
         brew services stop nginx
     + 生成https密钥公钥命令
         openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout localhost-privkey.pem -out localhost-cert.pem
+
+# nginx 1.4  和1.5 版本使用https的时候 需要修改 listen
+    + 1.4 版本是 listen 443; ssl on;
+    + 1.5 版本不需要ssl on; 直接是 listen 443 ssl;
+
+# 开启文件目录的读写权限
+    + sudo chmod 777 proxy_temp/
+
+# 查看nginx日志tail -f error.log
+    + 日志地址 /usr/local/var/log/nginx
+# 查看目录权限
+    + ls -l
