@@ -114,3 +114,42 @@ var LocalCookie = {
             });
         }
     };
+
+
+
+
+
+
+
+
+20178-08-08
+1、	echarts刷新动画界面重新加载api
+	chart.clear()
+
+	chart.setOption(obj);
+2、canvas
+	var canvas = document.getElementById(‘canvas’);			// 获取canvas元素
+	   ctx = canvas.getContext(“2d”);	// 创建canvas实例
+	   ctx.fillStyle = “颜色”;			// 设置颜色
+		
+2017-09-01
+	1、	vue脚手架 在ie 11  Promise 报错问题  安装npm install –save-dev babel-polyfill    在import vue之前import “babel-polyfill” 引入 ;
+	2、	ie8脚本之中在未开启控制台时不要写console.log ，否则会造成页面暂停，空白;
+	3、	document.location.protocol   获取https 或者http
+
+2017-09-14
+	1、	fiddler抓包  手机代理调试
+		a)	Tools -> HOSTS   粘贴host配置  保存
+		b)	Tools -> Telerik Fiddler Options ->Connections  下面的4个选项全选 
+		c)	打开手机WLAN  更多设置  手动   配置本地ip 配置端口号8888   保存
+		d)	从新启动Fiddler  刷新页面
+2017-10-31
+	1、	embed 引入pfd word等文件在网页中
+	a)	<embed	type="application/pdf"	src="http://hcgroup.hc360.com/pdf/CW02280ann_20171030.pdf" width="100%" height="100%" internalinstanceid="12" title="">
+
+
+2017-11-07
+	1、	iframe之间的跨域方式 
+		https://segmentfault.com/a/1190000010576085	
+		window.postMessage(“参数”,”指定跳转的链接”)；
+		window.onmessage = function(e){console.log(e)   //接收消息   }
