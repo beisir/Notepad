@@ -109,7 +109,7 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
 - 用户访问控制模块 http_access_module 访问页面的时候需要输入用户名密码 进行访问
 
   ```
-        创建用户名，密码  htpasswd -c 文件 用户名
+        # 创建用户名，密码  htpasswd -c 文件 用户名
         auth_basic "自己定义的字符串！";
         auth_basic_user_file /usr/local/etc/nginx/auth_conf;
   ```
@@ -118,7 +118,6 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
 
 # gzip 开启nignx 压缩
 
-````
 ```
     location ~ .*\.(txt|xml)$ {
         gzip on;    # 开启压缩
@@ -136,38 +135,32 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
         root /Users/hebei/Desktop/www;
     }
 ```
-````
 
 # nginx 设置缓存
 
-````
 ```
     location ~ .*\.(html|htm) {
         expires 24h; # 设置这个字段 创建缓存 cache-control:***
         root /Users/hebei/Desktop/www;
     }
 ```
-````
 
 # nginx 跨域访问
 
-````
 ```
     location ~ .*\.(html|htm) {
         add_header Access-Control-Allow-Origin http://10.240.64.227:8000;
         add_header Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS;
     }
 ```
-````
 
 # 防盗链
 
-````
+```
 + 目的：防止资源被盗用
 + 防盗链设置思路
     首要方式：区别哪些请求是非正常的用户请求
 + 基于http_refer放到链配置
-```   
     location / {
         # valid_referers 表示允许哪些信息来访问
         # none 表示允许没有带referer信息访问
@@ -179,11 +172,9 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
         }
     }
 ```
-````
 
 # nginx 负载均衡
 
-````
 ```
     # 请求会轮询这几个服务端口
     # weight=5 轮询的权重，加的越大权重越大
@@ -204,11 +195,9 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
         }
     }
 ```
-````
 
 # 缓存 proxy_cache
 
-````
 ```
     http {
         # proxy_cache_path /usr..... # 缓存存储路径
@@ -246,8 +235,4 @@ nginx 官方模块 查看官方支持模块nginx -V 带有--with- 前缀的
     };
     + 清理指定的url
         方式一：rm -rf 缓存目录
-
-
-
 ```
-````
