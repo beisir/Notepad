@@ -1,0 +1,20 @@
+1、获取历史搜索cookie searchWord hclastsearchkeyword  记录关键词最后一个 searchWord[0] || hclastsearchkeyword
+
+2、获取历史点击关键词 比如上面导航楼层的关键词 本地缓存localStore.homepageclickedkeyword
+
+3、获取关键词列表 将所有关键词获取为一个数组 格式为 {keyword: "布袋除尘器", time: 1558422392646}
+
+    格式数据分别为  _this.lastsearch, _this.userclick, _this.p4pinterface
+
+4、如果 _this.lastsearch _this.userclick 两份数据之中有值则显示 提示文字
+
+5、当三份数据都请求完毕之后 去重
+
+6、实例化p4p对象
+
+7、绑定浏览器滚动事件，
+        （1）_this.hasScrolledBottom 判断浏览器是否滚动到底部
+        （2）(!_this.keywords.length) || (_this.data.length >= _this.dataLimit) 如果关键词列表为空 或者 当前请求回来的数据>总共数据上限 停止触发
+        （3）_this.keywords.splice(0, Math.ceil((_this.dataLimitEachTime - _data.length) / _this.dataLimitEachKeyword))
+            获取关键词 使用（每次加载20 - 当前加载缓存长度）/ 每个关键字最多获取的数据数量 5 条
+        （4）
