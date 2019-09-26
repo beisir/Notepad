@@ -1,7 +1,7 @@
 ftp 有权限的目录
 /ftpstyle/style/js/public/private/youke/css
 
-
+git diff --cached  查看修改地方
 
 检测浏览器是否安装flsh方法： navigator.plugins['Shockwave Flash']
 
