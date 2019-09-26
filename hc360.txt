@@ -6,6 +6,8 @@ git diff --cached  查看修改地方
 检测浏览器是否安装flsh方法： navigator.plugins['Shockwave Flash']
 
 
+mc 修改文件名  mv index.html index2.html;
+
 
 /usr/local/nginx/html/RebusOpport   新版商机发布页
 
@@ -13,7 +15,7 @@ git diff --cached  查看修改地方
 miss 密码： 5211314..
 
 https://style.org.hc360.com/js/build/source/core/jquery.min.js
-disableHostCheck: true 
+disableHostCheck: true
 
 192.168.3.46 sso.hc360.com
 foxmail:
@@ -48,7 +50,7 @@ anywhere文字编码   C:\Users\hc360\AppData\Roaming\npm\node_modules\anywhere\bin
 
 方式二：先删除远程仓库地址，然后再添加
 
-【git remote rm origin】 删除现有远程仓库 
+【git remote rm origin】 删除现有远程仓库
 【git remote add origin url】添加新远程仓库
 
 
@@ -100,13 +102,13 @@ var LocalCookie = {
 	},
 	set: function(opt) {
 		var expire = ';expires=';
-  
+
 	          if (isNaN(opt.day))
 
                 	expire = '';
-         
+
 	   	else
- 
+
 		 expire += this.getExpireTimeString(opt.day);
             var domain = (opt.domain) ? ';domain=' + opt.domain : '';
             var path = (opt.path) ? ';path=' + opt.path : '';
